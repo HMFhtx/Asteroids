@@ -1,45 +1,24 @@
-let x = innerWidth/2;
-let y = innerHeight/2;
-let n = 0;
+var ship;
 
-function preload() {
-  img = loadImage('Rød_Trekant.png');
-}
-
-function setup() {  
-  imageMode(CENTER);
-  createCanvas(innerWidth, innerHeight);
+  function setup() {  
+  createCanvas(windowWidth, windowHeight);
+  ship = new ship(); 
 
   }
 
 function draw() {
   background(0);
+  ship.render();
+}
 
-  if (keyIsDown(LEFT_ARROW)) {
-    n = n -0.05;
+function ship() {
+  this.pos = createVector(width/2, height/2);
+  this.r = 20;
+  this.render = function() {
+    translate(this.pos.x, this.pos.y);
+    noFill();
+    stroke(255); 
+    triangle(-this.r, this.r, this.r, this.r, 0, -this.r);
+
   }
-
-  if (keyIsDown(RIGHT_ARROW)) {
-    n = n + 0.05;
-  }
-
-  if (keyIsDown(UP_ARROW)) {
-    y = y - 5;
-  }
-
-  if (keyIsDown(DOWN_ARROW)) {
-    y = y + 5;
-  }
-
-  if (x > innerWidth + 10) {
-    x = 0;
-  }
-
-
-
-  translate(x, y);
-  rotate(n + PI / 2);
-  image(img, 0, 0, 150, 150);
-  
-
 }
