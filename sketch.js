@@ -1,24 +1,38 @@
 var ship;
+var asteroids = [];
 
   function setup() {  
   createCanvas(windowWidth, windowHeight);
   ship = new ship(); 
-
-  }
+  asteroids.push(new asteroid());
+}
 
 function draw() {
   background(0);
   ship.render();
-}
+  ship.turn();
+  ship.update();
+  ship.edges();
 
-function ship() {
-  this.pos = createVector(width/2, height/2);
-  this.r = 20;
-  this.render = function() {
-    translate(this.pos.x, this.pos.y);
-    noFill();
-    stroke(255); 
-    triangle(-this.r, this.r, this.r, this.r, 0, -this.r);
-
+  for (var i = 0; i < asteroids.length; i++) {
+    asteroids[i].render();
   }
+
 }
+
+function keyReleased() {
+  ship.setRotation(0);
+  ship.boosting(false);
+}
+
+function keyPressed() {
+   if (keyCode == RIGHT_ARROW) {
+      ship.setRotation(0.1);
+   } else if (keyCode == LEFT_ARROW) {
+      ship.setRotation(-0.1);
+   } else if (keyCode == UP_ARROW) {
+     ship.boosting(true); 
+   }
+  
+}
+
