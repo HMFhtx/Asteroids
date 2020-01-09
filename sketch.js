@@ -24,7 +24,7 @@ function draw() {
     lasers[i].update();
   }
 }
-// Hans har skrevet der her
+// Hans har skrevet der her Benjamin min siger hvorfor?
 function keyReleased() {
   ship.setRotation(0);
   ship.boosting(false);
