@@ -1,13 +1,13 @@
 function Laser(spos) {
 
-    this.pos = createVector(spos.x, spos.y) ;
+    this.pos = createVector(spos.x, spos.y);
     this.vel = createVector();
 
     this.update = function () {
         this.pos.add(this.vel);
 
     }
-    this.update = function () {
+    this.render = function () {
         push();
         stroke(255);
         strokeWeight(4);

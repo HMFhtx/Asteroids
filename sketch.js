@@ -18,10 +18,10 @@ function draw() {
   for (var i = 0; i < asteroids.length; i++) {
     asteroids[i].render();
   }
-  
-  for (var i = 0; i < laser.length; i++) {
-    laser[i].render();
-    laser[i].update();
+
+  for (var i = 0; i < lasers.length; i++) {
+    lasers[i].render();
+    lasers[i].update();
   }
 }
 
