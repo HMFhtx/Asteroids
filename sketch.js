@@ -24,7 +24,7 @@ function draw() {
     lasers[i].update();
   }
 }
-
+// Hans har skrevet der her
 function keyReleased() {
   ship.setRotation(0);
   ship.boosting(false);
