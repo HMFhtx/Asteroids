@@ -29,7 +29,7 @@ function keyReleased() {
   ship.setRotation(0);
   ship.boosting(false);
 }
-
+// Benjamin skrev det her
 function keyPressed() {
   if (key == ' ') {
     lasers.push(new Laser(ship.pos));
