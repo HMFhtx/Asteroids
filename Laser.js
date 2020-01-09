@@ -1,6 +1,6 @@
-Function Laser(spos) {
+function Laser(spos) {
 
-    this.pos = createVector spos.x, spos.y();
+    this.pos = createVector(spos.x, spos.y) ;
     this.vel = createVector();
 
     this.update = function () {
