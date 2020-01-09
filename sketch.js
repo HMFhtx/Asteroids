@@ -10,7 +10,10 @@ function setup() {
 
 function draw() {
   background(0);
-
+  ship.render();
+  ship.turn();
+  ship.update();
+  ship.edges();
 
   for (var i = 0; i < asteroids.length; i++) {
     asteroids[i].render();
@@ -20,11 +23,6 @@ function draw() {
     lasers[i].render();
     lasers[i].update();
   }
-  
-  ship.render();
-  ship.turn();
-  ship.update();
-  ship.edges();
 
 }
 
