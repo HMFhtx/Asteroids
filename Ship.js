@@ -15,12 +15,12 @@ function ship() {
       this.boost();
     }
     this.pos.add(this.vel);
-    this.vel.mult(0.97);
+    this.vel.mult(0.99);
   }
 
   this.boost = function () {
     var force = p5.Vector.fromAngle(this.heading);
-    force.mult(0.2);
+    force.mult(0.1);
     this.vel.add(force);
   }
 
@@ -47,11 +47,11 @@ function ship() {
 
   }
 
-  this.setRotation = function (a) {
+  this.setRotation = function(a) {
     this.rotation = a;
   }
 
-  this.turn = function () {
+  this.turn = function() {
     this.heading += this.rotation;
   }
 

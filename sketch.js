@@ -25,7 +25,7 @@ function draw() {
   }
 }
 
-
+ 
 function keyReleased() {
   ship.setRotation(0);
   ship.boosting(false);
