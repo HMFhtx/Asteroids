@@ -1,4 +1,4 @@
-function ship() {
+function Ship() {
   this.pos = createVector(width / 2, height / 2);
   this.r = 20;
   this.heading = 0;
@@ -19,7 +19,7 @@ function ship() {
   }
 
   this.boost = function() {
-    var force = p5.Vector.fromAngle(this.heading);
+    let force = p5.Vector.fromAngle(this.heading);
     force.mult(0.1);
     this.vel.add(force);
   }

@@ -1,10 +1,10 @@
-var ship;
-var asteroids = [];
-var lasers = [];
+let ship;
+let asteroids = [];
+let lasers = [];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  ship = new ship();
+  ship = new Ship();
   asteroids.push(new Asteroid());
 }
 
@@ -15,14 +15,14 @@ function draw() {
   ship.update();
   ship.edges();
 
-  for (var i = 0; i < asteroids.length; i++) {
+  for (let i = 0; i < asteroids.length; i++) {
     asteroids[i].render();
   }
 
-  for (var i = 0; i < lasers.length; i++) {
+  for (let i = 0; i < lasers.length; i++) {
     lasers[i].render();
     lasers[i].update();
-    for (var j = 0; j < asteroids.length; j++)
+    for (let j = 0; j < asteroids.length; j++)
 
     if(lasers[i].hits(asteroids[j])) {
 
