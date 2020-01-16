@@ -1,6 +1,6 @@
 var ship;
 var asteroids = [];
-var laser = [];
+var lasers = [];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);

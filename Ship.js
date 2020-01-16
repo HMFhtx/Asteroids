@@ -6,11 +6,11 @@ function ship() {
   this.vel = createVector(0, 0);
   this.isBoosting = false;
 
-  this.boosting = function (b) {
+  this.boosting = function(b) {
     this.isBoosting = b;
   }
 
-  this.update = function () {
+  this.update = function() {
     if (this.isBoosting) {
       this.boost();
     }
@@ -18,7 +18,7 @@ function ship() {
     this.vel.mult(0.99);
   }
 
-  this.boost = function () {
+  this.boost = function() {
     var force = p5.Vector.fromAngle(this.heading);
     force.mult(0.1);
     this.vel.add(force);
@@ -32,7 +32,7 @@ function ship() {
     triangle(-this.r, this.r, this.r, this.r, 0, -this.r);
   }
 
-  this.edges = function () {
+  this.edges = function() {
     if (this.pos.x > width + this.r) {
       this.pos.x = -this.r;
     } else if (this.pos.x < -this.r) {
