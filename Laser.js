@@ -21,9 +21,9 @@ function Laser(spos, angle) {
         var d = dist(this.pos.x, this.pos.y, asteroids.pos.x, asteroids.pos.y);
         if (d < this.r + asteroids.r) {
             return true;
-            else {
-                return false;
-            }
+            
+        }else {
+            return false;
         }
     }
 }
