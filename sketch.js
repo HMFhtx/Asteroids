@@ -1,10 +1,10 @@
-var ship;
-var asteroids = [];
-var lasers = [];
+let ship;
+let asteroids = [];
+let lasers = [];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  ship = new ship();
+  ship = new Ship();
   asteroids.push(new Asteroid());
 }
 
