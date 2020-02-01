@@ -6,8 +6,8 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   ship = new Ship();
   for (let i = 0; i < 10; i++) {
-  asteroids.push(new Asteroid());
-}
+    asteroids.push(new Asteroid());
+  }
 }
 
 
@@ -20,9 +20,21 @@ function draw() {
     asteroids[i].edges();
   }
 
-  for (var i = 0; i < lasers.length; i++) {
+  for (var i = lasers.length - 1; i >= 0; i--) {
     lasers[i].render();
     lasers[i].update();
+    for (var j = asteroids.length - 1; j >= 0; j--) {
+      if (lasers[i].hits(asteroids[j])) {
+        if (asteroids[j].r > 20) {
+          let newAsteroids = asteroids[j].breakup();
+          asteroids = asteroids.concat(newAsteroids);
+        }
+        asteroids.splice(j, 1);
+        lasers.splice(i, 1);
+        break;
+      }
+    }
+
   }
 
   ship.render();
@@ -31,7 +43,7 @@ function draw() {
   ship.edges();
 }
 
- 
+
 function keyReleased() {
   ship.setRotation(0);
   ship.boosting(false);
@@ -48,5 +60,4 @@ function keyPressed() {
     ship.boosting(true);
   }
 
-  
 }
