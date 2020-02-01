@@ -15,6 +15,9 @@ function draw() {
   background(0);
 
   for (var i = 0; i < asteroids.length; i++) {
+    if (ship.hits(asteroids[i])) {
+      background('red');
+    }
     asteroids[i].render();
     asteroids[i].update();
     asteroids[i].edges();
@@ -34,7 +37,6 @@ function draw() {
         break;
       }
     }
-
   }
 
   ship.render();
