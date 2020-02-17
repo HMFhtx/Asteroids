@@ -24,6 +24,11 @@ function Ship() {
     this.vel.add(force);
   }
 
+  this.reset = function () {
+    this.pos.x = width/2;
+    this.pos.y = height/2;
+  }
+
   this.hits = function(asteroid) {
     var d = dist(this.pos.x, this.pos.y, asteroid.pos.x, asteroid.pos.y);
     if (d < this.r + asteroid.r) {
