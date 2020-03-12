@@ -2,10 +2,11 @@ let ship;
 let asteroids = [];
 let lasers = [];
 let points = 0;
+let lives = 3;
 
 function preload() {
-  laserSound = loadSound('LaserSound.mp3')
-  explosionSound = loadSound('ExplosionSound.mp3')
+  skud = loadSound('skud.mp3');
+  explosionSound = loadSound('ExplosionSound.mp3');
 }
 
 function setup() {
@@ -13,17 +14,21 @@ function setup() {
   ship = new Ship();
   for (let i = 0; i < 10; i++) {
     asteroids.push(new Asteroid());
-  }
-}
 
+
+  }
+  
+}
 
 function draw() {
   background(0);
 
   textSize(32);
   fill(255, 0, 0);
-  text('Points:', 0, 25);
-  text(points, 100, 27)
+  text('Points:', 0, 50);
+  text(points, 100, 52)
+  text('Lives:', 0, 25);
+  text(lives, 100, 25);
 
 
   for (var i = 0; i < asteroids.length; i++) {
@@ -32,10 +37,25 @@ function draw() {
       
       // du er død
       ship.reset();
-      ship.boosting(0);
+      ship.vel.mult (0);
 
-
+      lives = lives - 1;
     }
+
+    if (lives <=0) {
+      points = points - points;
+      textSize(100);
+      fill(255);
+      textAlign(CENTER);
+      text('GAME OVER', windowWidth/2, windowHeight/2);
+
+      textSize(32);
+      fill(255);
+      textAlign(CENTER);
+      text('Refresh to try again', windowWidth/2, windowHeight/2+50);
+      return keyPressed;
+    }
+
     asteroids[i].render();
     asteroids[i].update();
     asteroids[i].edges();
@@ -71,13 +91,14 @@ function draw() {
 function keyReleased() {
   ship.setRotation(0);
   ship.boosting(false);
+
 }
 
 function keyPressed() {
   if (key == ' ') {
     lasers.push(new Laser(ship.pos, ship.heading));
-    laserSound.setVolume(0.1);
-    laserSound.play();
+    skud.setVolume(0.1);
+    skud.play();
   } else if (keyCode == RIGHT_ARROW) {
     ship.setRotation(0.1);
   } else if (keyCode == LEFT_ARROW) {
@@ -85,5 +106,4 @@ function keyPressed() {
   } else if (keyCode == UP_ARROW) {
     ship.boosting(true);
   }
-
 }
